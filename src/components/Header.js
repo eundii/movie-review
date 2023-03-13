@@ -8,7 +8,7 @@ function Header() {
       <nav>
         <h1 className={styles.logo}>
           <Link to={"/"}>
-            Movie <span>Diary</span>
+            <span>Eundii</span> Movie
           </Link>
         </h1>
         <ul>

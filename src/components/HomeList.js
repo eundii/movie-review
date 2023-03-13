@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import styles from "../scss/home.module.scss";
+import styles from "../scss/homeList.module.scss";
+
 import HomeListItem from "./HomeListItem";
 
-function HomeList({ title, homeList }) {
+function HomeList({ title, homeList, view }) {
   const sliderSettings = {
     arrows: true,
     dots: false,
     infinite: false,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: view,
+    slidesToScroll: view,
   };
   return (
-    <section>
+    <section class={styles.section}>
       <h3 className={styles.title}>{title}</h3>
-      <div>
+      <div className={styles.contents}>
         <Slider {...sliderSettings}>
           {homeList &&
-            homeList.map((item, idx) => (
+            homeList.map((item) => (
               <HomeListItem key={`${item.id}`} {...item} />
             ))}
         </Slider>

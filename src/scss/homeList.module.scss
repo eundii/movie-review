@@ -1,0 +1,36 @@
+@import 'value';
+
+.section {
+  margin: 3rem 0 6rem;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  @include fontHeight(2.6);
+  font-weight: $fontBold;
+}
+
+.contents {
+  .item {
+    &_img {
+      border-radius: 0.6rem;
+      overflow: hidden;
+    }
+    &_dec {
+      margin-top: 2rem;
+    }
+    &_title {
+      @include fontHeight(1.6);
+      font-weight: $fontBold;
+    }
+    &_date {
+      margin-top: 0.2rem;
+      @include fontHeight(1.4);
+    }
+    &_rate {
+      margin-top: 0.4rem;
+      @include fontHeight(1.4);
+      color: $text1;
+    }
+  }
+}

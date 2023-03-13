@@ -17,12 +17,19 @@ function Home() {
     <>
       <Header />
       <div className="layout-container">
-        <Search />
         {data && (
           <>
-            <HomeList title={"인기순"} homeList={data.popular} />
-            <HomeList title={"평점순"} homeList={data.topRated} />
-            <HomeList title={""} homeList={data.latest} />
+            <HomeList
+              title={"요즘 가장 인기있어요🤩"}
+              homeList={data.popular}
+              view={4}
+            />
+            <HomeList
+              title={"평가가 좋은 영화❤️"}
+              homeList={data.topRated}
+              view={5}
+            />
+            <HomeList title={"최근 상영중🎬"} homeList={data.latest} view={5} />
           </>
         )}
       </div>

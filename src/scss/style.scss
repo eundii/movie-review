@@ -3,6 +3,18 @@
 @import 'reset';
 
 .layout-container {
-  max-width: 117rem;
-  margin: 0 auto;
+  @include layout;
+}
+
+/* slick common */
+.slick-slider {
+  .slick-list {
+    margin: 0 -1rem;
+  }
+  .slick-slide {
+    padding: 0 1rem;
+    img {
+      width: 100%;
+    }
+  }
 }
