@@ -6,13 +6,25 @@ import Search from "../components/Search";
 
 function Home() {
   const homeList = useContext(MovieStateContext);
+  const [data, setData] = useState(null);
 
+  useEffect(() => {
+    if (homeList) {
+      setData(homeList);
+    }
+  }, [homeList]);
   return (
     <>
       <Header />
       <div className="layout-container">
         <Search />
-        <HomeList title={"인기순"} homeList={homeList} />
+        {data && (
+          <>
+            <HomeList title={"인기순"} homeList={data.popular} />
+            <HomeList title={"평점순"} homeList={data.topRated} />
+            <HomeList title={""} homeList={data.latest} />
+          </>
+        )}
       </div>
     </>
   );

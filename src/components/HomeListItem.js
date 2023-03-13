@@ -3,7 +3,7 @@ import { IMAGE_BASE_URL } from "../api/baseUrl";
 
 function HomeListItem({ ...item }) {
   return (
-    <li>
+    <div>
       <div>
         <img
           src={
@@ -17,7 +17,7 @@ function HomeListItem({ ...item }) {
         <p>{item.release_date}</p>
         <p>평균{item.vote_average}</p>
       </div>
-    </li>
+    </div>
   );
 }
 
