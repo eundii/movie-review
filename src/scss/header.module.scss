@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import 'value';
+
+.header {
+  border-bottom: 1px solid $line1;
+  nav {
+    @include layout; // 고민중
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    ul {
+      display: flex;
+      align-items: center;
+      li {
+        position: relative;
+        @include fontHeight(1.6);
+        font-weight: $fontBold;
+        a {
+          color: $active2;
+        }
+        + li {
+          margin-left: 1.2rem;
+          padding-left: 1.2rem;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            display: block;
+            background-color: $line1;
+            width: 1px;
+            height: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.logo {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4rem;
+  span {
+    color: $primary1;
+  }
+}

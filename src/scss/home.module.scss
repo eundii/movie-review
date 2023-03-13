@@ -1,0 +1,6 @@
+@import 'value';
+
+.title {
+  @include fontHeight(2.6);
+  font-weight: $fontBold;
+}
