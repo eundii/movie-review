@@ -10,6 +10,7 @@ import SearchList from "./pages/SearchList";
 import ReviewList from "./pages/ReviewList";
 import ReviewDetail from "./pages/ReviewDetail";
 import MovieDetail from "./pages/MovieDetail";
+import Header from "./components/Header";
 
 export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
@@ -56,6 +57,7 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <div className="container">
+              <Header />
               <Routes>
                 <Route path="" element={<Home />} />
                 <Route path="/search/:id" element={<SearchList />} />

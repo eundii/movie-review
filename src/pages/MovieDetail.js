@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
 import axios from "axios";
 import { BASE_URL, API_KEY, IMAGE_BASE_URL } from "../api/baseUrl";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styles from "../scss/movieDetail.module.scss";
 import MovieInfo from "../components/MovieInfo";
@@ -49,7 +48,6 @@ function MovieDetail() {
 
   return (
     <>
-      <Header />
       {data && (
         <div className="container">
           <div className={styles.main}>

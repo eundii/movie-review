@@ -2,6 +2,10 @@
 @import 'value';
 @import 'reset';
 
+.container {
+  padding-top: 8.6rem;
+}
+
 .layout-container {
   max-width: $maxWidth;
   margin: 0 auto;
@@ -18,6 +22,35 @@
     padding: 0 1rem;
     img {
       width: 100%;
+    }
+  }
+  .slick-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-top: -4rem;
+    border-radius: 50%;
+    background-color: $white;
+    box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: $gray;
+    &.slick-disabled {
+      display: none;
+    }
+    &:hover {
+      background-color: $white;
+      svg {
+        color: $text1;
+      }
+    }
+    &::before, &:after {
+      content: ""
+    }
+    svg {
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

@@ -71,9 +71,10 @@
     }
     .cast_info {
       display: flex;
+      flex-wrap: wrap;
       margin: 0 -1rem;
       li {
-        width: 100%;
+        width: 20%;
         padding: 0 1rem;
         .cast_info_content {
           height: 100%;

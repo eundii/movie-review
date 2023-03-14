@@ -6,7 +6,18 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../scss/homeList.module.scss";
 import sectionCss from "../scss/section.module.scss";
 
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
 import HomeListItem from "./HomeListItem";
+
+function Arrow(props) {
+  const { icons, className, onClick } = props;
+  return (
+    <div className={className} onClick={onClick}>
+      {icons}
+    </div>
+  );
+}
 
 function HomeList({ title, homeList, view }) {
   const sliderSettings = {
@@ -15,6 +26,8 @@ function HomeList({ title, homeList, view }) {
     infinite: false,
     slidesToShow: view,
     slidesToScroll: view,
+    nextArrow: <Arrow icons={<FaArrowRight />} />,
+    prevArrow: <Arrow icons={<FaArrowLeft />} />,
   };
   return (
     <section className={sectionCss.section}>
