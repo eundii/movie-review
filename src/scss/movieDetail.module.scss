@@ -1,0 +1,70 @@
+@import 'value';
+
+.main {
+  position: relative;
+  &_image {
+    position: relative;
+    max-width: 114rem;
+    width: 100%;
+    margin: 0 auto;
+    filter: brightness(50%);
+    &_area {
+      background-color: black;
+    }
+    &::after, &::before {
+      content: "";
+      display: block;
+      width: 6rem;
+      height: 100%;
+      position: absolute;
+      top: 0;
+    }
+    &::after {
+      right: 0;
+      background: linear-gradient(90deg, transparent, black);
+    }
+    &::before {
+      left: 0;
+      background: linear-gradient(-90deg, transparent, black);
+    }
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  &_desc {
+    position: absolute;
+    max-width: $maxWidth;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    padding: 6rem 3rem;
+    transform: translate(-50%, 0);
+    color: $white;
+  }
+  &_title {
+    margin-bottom: 5rem;
+  }
+  &_text {
+    opacity: 0.7;
+    span {
+      +span {
+        &::before {
+          content: '·';
+          padding: 0 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+.movie {
+  &_title {
+    @include fontHeight(4.4);
+    font-weight: $fontBold;
+    margin-bottom: 1rem;
+  }
+  &_tagline {
+    @include fontHeight(2);
+  }
+}

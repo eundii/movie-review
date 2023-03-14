@@ -1,0 +1,115 @@
+@import 'value';
+
+.movie {
+  &_content {
+    display: flex;
+  }
+  &_left {
+    flex: 1;
+  }
+  &_right {
+    flex: 2;
+    padding-left: 4rem;
+  }
+  .img_area {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid $line1;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .info_section {
+    padding-bottom: 2rem;
+    + .info_section {
+      padding-top: 2rem;
+      border-top: 1px solid $line1;
+    }
+    h4 {
+      margin-bottom: 2rem;
+      @include fontHeight(2);
+      font-weight: $fontBold;
+    }
+    .basic_info {
+      .title {
+        @include fontHeight(1.8);
+        font-weight: $fontBold;
+      }
+      .date {
+        margin-top: 0.2rem;
+        @include fontHeight(1.4);
+      }
+      .genres_list {
+        display: flex;
+        flex-wrap:wrap;
+        margin-top: 0.8rem;
+        li {
+          span {
+            display: block;
+            min-width: 4rem;
+            padding: 0.3rem 1.2rem;
+            background-color: $bg;
+            border-radius: 1.4rem;
+            @include fontHeight(1.4);
+            font-weight: $fontBold;
+            border: 1px solid $line1;
+            text-align: center;
+          }
+          +li {
+            padding-left: 0.6rem;
+          }
+        }
+      }
+      .overview {
+        margin-top: 2rem;
+        p {
+          @include fontHeight(1.4);
+        }
+      }
+    }
+    .cast_info {
+      display: flex;
+      margin: 0 -1rem;
+      li {
+        width: 100%;
+        padding: 0 1rem;
+        .cast_info_content {
+          height: 100%;
+          border-radius: 0.5rem;
+          border: 1px solid $line1;
+          overflow: hidden;
+        }
+        .cast_img {
+          position: relative;
+          padding-bottom: 120%;
+          overflow: hidden;
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: block;
+          }
+        }
+        .cast_name {
+          margin: 0.6rem 0.8rem 1.2rem;
+          .name {
+            @include fontHeight(1.6);
+            font-weight: $fontBold;
+          }
+          .character {
+            @include fontHeight(1.4);
+            color: $text1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}

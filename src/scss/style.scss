@@ -3,7 +3,10 @@
 @import 'reset';
 
 .layout-container {
-  @include layout;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: 0 3rem;
+  // padding: 0 $maxWidthPad;
 }
 
 /* slick common */

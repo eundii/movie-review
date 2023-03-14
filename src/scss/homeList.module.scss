@@ -13,15 +13,34 @@
 .contents {
   .item {
     &_img {
+      position: relative;
+      width: 100%;
       border-radius: 0.6rem;
       overflow: hidden;
+      padding-bottom: 140%;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%, -50%);
+      }
     }
     &_dec {
       margin-top: 2rem;
+      cursor: pointer;
+      
+      &:hover, &:focus {
+        .item_title {
+          text-decoration: underline;
+        }
+      }
     }
     &_title {
       @include fontHeight(1.6);
       font-weight: $fontBold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     &_date {
       margin-top: 0.2rem;

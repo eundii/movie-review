@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import styles from "../scss/homeList.module.scss";
+import sectionCss from "../scss/section.module.scss";
 
 import HomeListItem from "./HomeListItem";
 
@@ -16,8 +17,8 @@ function HomeList({ title, homeList, view }) {
     slidesToScroll: view,
   };
   return (
-    <section class={styles.section}>
-      <h3 className={styles.title}>{title}</h3>
+    <section className={sectionCss.section}>
+      <h3 className={sectionCss.title}>{title}</h3>
       <div className={styles.contents}>
         <Slider {...sliderSettings}>
           {homeList &&

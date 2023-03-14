@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import SearchList from "./pages/SearchList";
 import ReviewList from "./pages/ReviewList";
 import ReviewDetail from "./pages/ReviewDetail";
+import MovieDetail from "./pages/MovieDetail";
 
 export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
@@ -18,9 +19,9 @@ function App() {
   // const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const apiUrlPopular = `${BASE_URL}movie/popular?api_key=${API_KEY}`;
-    const apiUrlTopRated = `${BASE_URL}movie/top_rated?api_key=${API_KEY}`;
-    const apiUrlLatest = `${BASE_URL}movie/now_playing?api_key=${API_KEY}`;
+    const apiUrlPopular = `${BASE_URL}movie/popular?api_key=${API_KEY}&language=ko`;
+    const apiUrlTopRated = `${BASE_URL}movie/top_rated?api_key=${API_KEY}&language=ko`;
+    const apiUrlLatest = `${BASE_URL}movie/now_playing?api_key=${API_KEY}&language=ko`;
 
     const fetchMovies = async () => {
       try {
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/search/:id" element={<SearchList />} />
                 <Route path="/review/:id" element={<ReviewList />} />
                 <Route path="/detail/:id" element={<ReviewDetail />} />
+                <Route path="/movie/:id" element={<MovieDetail />} />
               </Routes>
             </div>
           </div>

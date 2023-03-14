@@ -4,11 +4,13 @@
 .header {
   border-bottom: 1px solid $line1;
   nav {
-    @include layout; // 고민중
+    max-width: $maxWidth;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 0;
+    padding: 1.5rem 3rem;
+    margin: 0 auto;
+    box-sizing: border-box;
     ul {
       display: flex;
       align-items: center;
