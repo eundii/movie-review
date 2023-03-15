@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL, API_KEY, IMAGE_BASE_URL } from "../api/baseUrl";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "../scss/movieDetail.module.scss";
 import MovieInfo from "../components/MovieInfo";
@@ -10,6 +10,7 @@ import HomeList from "../components/HomeList";
 function MovieDetail() {
   let { id } = useParams();
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
   const env = process.env;
   env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -48,7 +49,7 @@ function MovieDetail() {
 
   return (
     <>
-      {data && (
+      {data ? (
         <div>
           <div className={styles.main}>
             <div className={styles.main_image_area}>
@@ -89,6 +90,8 @@ function MovieDetail() {
             ) : null}
           </div>
         </div>
+      ) : (
+        navigate("/", { replace: true })
       )}
     </>
   );

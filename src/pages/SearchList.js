@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { API_KEY, BASE_URL } from "../api/baseUrl";
 import axios from "axios";
 import searchListCss from "../scss/searchList.module.scss";
@@ -10,6 +10,7 @@ function SearchList() {
   const [data, setData] = useState(null);
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const search = searchParams.get("query");
 
@@ -47,8 +48,6 @@ function SearchList() {
     fetchSearch();
   };
 
-  const fetchMovies = (url) => {};
-
   return (
     <div className={searchListCss.search_list}>
       {search ? (
@@ -83,7 +82,7 @@ function SearchList() {
           )}
         </div>
       ) : (
-        <div>잘못된 접근 입니다.</div>
+        navigate("/", { replace: true })
       )}
     </div>
   );
