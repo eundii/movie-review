@@ -49,14 +49,14 @@ function MovieDetail() {
   return (
     <>
       {data && (
-        <div className="container">
+        <div>
           <div className={styles.main}>
             <div className={styles.main_image_area}>
               <div className={styles.main_image}>
                 <img
                   src={
                     data.movie.backdrop_path
-                      ? `${IMAGE_BASE_URL}original${data.movie.backdrop_path}`
+                      ? `${IMAGE_BASE_URL}w1280${data.movie.backdrop_path}`
                       : process.env.PUBLIC_URL + `/assets/no_image_backdrop.png`
                   }
                   alt={data.movie.title}

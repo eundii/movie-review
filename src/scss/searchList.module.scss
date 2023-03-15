@@ -1,0 +1,68 @@
+@import 'value';
+
+.search_list {
+  padding-bottom: 12rem;
+}
+
+.search_result {
+  padding: 6rem 0;
+  text-align: center;
+  .search_text{
+    display: block;
+    color: $active1;
+    @include fontHeight(3.2);
+    font-weight: $fontBold;
+  }
+  .search_count {
+    display: block;
+    padding-top: 1.6rem;
+    @include fontHeight(1.8);
+    .count {
+      color: $active1;
+      font-weight: $fontBold;
+    }
+  }
+}
+
+.search_list_result {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  .search_item {
+    width: 50%;
+  }
+}
+
+.search_item {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid $line1;
+  cursor: pointer;
+  .item_img {
+    flex: 0 0 auto;
+    width: 12rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  .item_dec {
+    padding: 0 2rem;
+  }
+  .item_title {
+    @include fontHeight(2);
+    font-weight: $fontBold;
+  }
+  .item_date {
+    @include fontHeight(1.6);
+    color: $text1;
+  }
+  .item_rate {
+    margin-top: 1.2rem;
+    @include fontHeight(1.4);
+    color: $text1;
+  }
+}

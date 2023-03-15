@@ -26,6 +26,7 @@ function HomeList({ title, homeList, view }) {
     infinite: false,
     slidesToShow: view,
     slidesToScroll: view,
+    swipe: false,
     nextArrow: <Arrow icons={<FaArrowRight />} />,
     prevArrow: <Arrow icons={<FaArrowLeft />} />,
   };

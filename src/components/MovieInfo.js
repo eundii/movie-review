@@ -48,7 +48,7 @@ function MovieInfo({ movie, credits }) {
                   </div>
                 </div>
               </div>
-              {credits && (
+              {credits.cast.length ? (
                 <div className={movieCss.info_section}>
                   <h4>출연 정보</h4>
                   <ul className={movieCss.cast_info}>
@@ -77,7 +77,7 @@ function MovieInfo({ movie, credits }) {
                     ))}
                   </ul>
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
         )}

@@ -12,6 +12,19 @@
 
 .contents {
   .item {
+    cursor: pointer;
+    &:hover, &:focus {
+      .item_img {
+        transition: 0.3s all;
+        filter: brightness(70%);
+        img {
+          width: 110%;
+        }
+      }
+      .item_title {
+        text-decoration: underline;
+      }
+    }
     &_img {
       position: relative;
       width: 100%;
@@ -23,17 +36,11 @@
         top: 50%;
         left: 50%;
         transform:translate(-50%, -50%);
+        transition: 0.3s all;
       }
     }
     &_dec {
       margin-top: 2rem;
-      cursor: pointer;
-      
-      &:hover, &:focus {
-        .item_title {
-          text-decoration: underline;
-        }
-      }
     }
     &_title {
       @include fontHeight(1.6);

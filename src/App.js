@@ -17,7 +17,6 @@ export const MovieDispatchContext = React.createContext();
 
 function App() {
   const [data, setData] = useState(null);
-  // const [query, setQuery] = useState("");
 
   useEffect(() => {
     const apiUrlPopular = `${BASE_URL}movie/popular?api_key=${API_KEY}&language=ko`;
@@ -60,7 +59,7 @@ function App() {
               <Header />
               <Routes>
                 <Route path="" element={<Home />} />
-                <Route path="/search/:id" element={<SearchList />} />
+                <Route path="/search" element={<SearchList />} />
                 <Route path="/review/:id" element={<ReviewList />} />
                 <Route path="/detail/:id" element={<ReviewDetail />} />
                 <Route path="/movie/:id" element={<MovieDetail />} />

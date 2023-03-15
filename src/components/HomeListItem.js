@@ -15,7 +15,7 @@ function HomeListItem({ ...item }) {
   };
 
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={() => goMovieDetail(item.id)}>
       <div className={styles.item_img}>
         <img
           src={
@@ -26,7 +26,7 @@ function HomeListItem({ ...item }) {
           alt={item.original_title}
         />
       </div>
-      <div className={styles.item_dec} onClick={() => goMovieDetail(item.id)}>
+      <div className={styles.item_dec}>
         <p className={styles.item_title}>{item.title}</p>
         <p className={styles.item_date}>{item.release_date}</p>
         <p className={styles.item_rate}>평균 ★{item.vote_average}</p>
