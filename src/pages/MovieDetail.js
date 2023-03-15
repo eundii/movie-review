@@ -18,7 +18,7 @@ function MovieDetail() {
   useEffect(() => {
     const apiUrlMovie = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=ko`;
     const apiUrlCredits = `${BASE_URL}movie/${id}/credits?api_key=${API_KEY}&language=ko`;
-    const apiUrlSimilar = `${BASE_URL}movie/${id}/similar?api_key=${API_KEY}&language=ko`;
+    const apiUrlSimilar = `${BASE_URL}movie/${id}/recommendations?api_key=${API_KEY}&language=ko`;
 
     const fetchMovie = async () => {
       try {

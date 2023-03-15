@@ -19,6 +19,10 @@ function Search() {
   };
   const onSearch = () => {
     const currentValue = inputRef.current.value;
+    if (!currentValue.length) {
+      alert("검색어를 입력해주세요.");
+      return false;
+    }
     navigate(`/search?query=${currentValue}`);
     updateSearchInput("");
   };
