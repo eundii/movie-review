@@ -11,6 +11,7 @@ import ReviewList from "./pages/ReviewList";
 import ReviewDetail from "./pages/ReviewDetail";
 import MovieDetail from "./pages/MovieDetail";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
@@ -51,12 +52,12 @@ function App() {
   }, []);
 
   return (
-    <MovieStateContext.Provider value={data}>
-      <MovieDispatchContext.Provider value={[]}>
-        <BrowserRouter>
-          <div className="App">
+    <div className="App">
+      <MovieStateContext.Provider value={data}>
+        <MovieDispatchContext.Provider value={[]}>
+          <BrowserRouter>
+            <Header />
             <div className="container">
-              <Header />
               <Routes>
                 <Route path="" element={<Home />} />
                 <Route path="/search" element={<SearchList />} />
@@ -65,10 +66,11 @@ function App() {
                 <Route path="/movie/:id" element={<MovieDetail />} />
               </Routes>
             </div>
-          </div>
-        </BrowserRouter>
-      </MovieDispatchContext.Provider>
-    </MovieStateContext.Provider>
+          </BrowserRouter>
+        </MovieDispatchContext.Provider>
+      </MovieStateContext.Provider>
+      <Footer />
+    </div>
   );
 }
 

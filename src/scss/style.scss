@@ -2,8 +2,15 @@
 @import 'value';
 @import 'reset';
 
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .container {
+  flex: 1;
   padding-top: 8.6rem;
+  padding-bottom: 8.6rem;
 }
 
 .layout-container {

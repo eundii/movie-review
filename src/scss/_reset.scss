@@ -1,8 +1,13 @@
 /* common */
+#root {
+  height: 100%;
+}
 html {
+  height: 100%;
   font-size: 62.5%;
 }
 body {
+  height: 100%;
   -webkit-text-size-adjust:none;
   -ms-user-select: none; 
   -moz-user-select: -moz-none;
