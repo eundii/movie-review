@@ -9,23 +9,45 @@ function SearchList() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState(null);
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const search = searchParams.get("query");
 
   useEffect(() => {
-    const apiUrlSearch = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${search}&language=ko`;
+    const apiUrlSearch = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${search}&language=ko&page=1`;
 
     const fetchSearch = async () => {
       try {
         const response = await axios.get(apiUrlSearch);
         setData(response.data);
-        setMovies([...movies, ...response.data.results]);
+        setMovies(response.data.results);
+        setCurrentPage(response.data.page);
       } catch (e) {
         console.log(e);
       }
     };
     fetchSearch();
   }, [search]);
+
+  const loadMoreItem = () => {
+    const apiUrlSearch = `${BASE_URL}search/movie?api_key=${API_KEY}&query=${search}&language=ko&page=${
+      currentPage + 1
+    }`;
+
+    const fetchSearch = async () => {
+      try {
+        const response = await axios.get(apiUrlSearch);
+        setData(response.data);
+        setMovies([...movies, ...response.data.results]);
+        setCurrentPage(response.data.page);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchSearch();
+  };
+
+  const fetchMovies = (url) => {};
 
   return (
     <div className={searchListCss.search_list}>
@@ -43,17 +65,22 @@ function SearchList() {
               </span>
             )}
           </div>
-          <div className={searchListCss.search_list_result}>
-            {data &&
-              data.results.map((item) => (
-                <SearchListItem key={item.id} {...item} />
-              ))}
-          </div>
-          <div className={searchListCss.search_load_more}>
-            {/* <button type="button" onClick={loadMoreItem}>
-              더 불러오기
-            </button> */}
-          </div>
+          {data && (
+            <>
+              <div className={searchListCss.search_list_result}>
+                {movies.map((item) => (
+                  <SearchListItem key={item.id} {...item} />
+                ))}
+              </div>
+              <div className={searchListCss.search_load_more}>
+                {data.total_pages > currentPage ? (
+                  <button type="button" onClick={loadMoreItem}>
+                    더보기
+                  </button>
+                ) : null}
+              </div>
+            </>
+          )}
         </div>
       ) : (
         <div>잘못된 접근 입니다.</div>

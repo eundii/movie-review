@@ -25,9 +25,17 @@
 }
 
 .search_list_result {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $white;
+  }
   .search_item {
     width: 50%;
   }
@@ -64,5 +72,15 @@
     margin-top: 1.2rem;
     @include fontHeight(1.4);
     color: $text1;
+  }
+}
+
+.search_load_more {
+  padding: 4rem 0;
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    border: 1px solid $line1;
   }
 }
