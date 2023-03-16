@@ -61,8 +61,8 @@ function App() {
               <Routes>
                 <Route path="" element={<Home />} />
                 <Route path="/search" element={<SearchList />} />
-                <Route path="/review/:id" element={<ReviewList />} />
-                <Route path="/detail/:id" element={<ReviewDetail />} />
+                {/* <Route path="/review/:id" element={<ReviewList />} />
+                <Route path="/detail/:id" element={<ReviewDetail />} /> */}
                 <Route path="/movie/:id" element={<MovieDetail />} />
               </Routes>
             </div>

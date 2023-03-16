@@ -80,3 +80,11 @@
     border: 1px solid $line1;
   }
 }
+
+@media (max-width: 768px) {
+  .search_list_result {
+    .search_item {
+      width: 100%;
+    }
+  }
+}

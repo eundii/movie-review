@@ -16,10 +16,10 @@ function Header() {
           <Search />
           <ul>
             <li>
-              <Link to={"/search"}>평가</Link>
+              <Link to={"/"}>평가</Link>
             </li>
             <li>
-              <Link to={"/review"}>북마크</Link>
+              <Link to={"/"}>북마크</Link>
             </li>
           </ul>
         </nav>

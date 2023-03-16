@@ -68,3 +68,24 @@
     @include fontHeight(2);
   }
 }
+
+@media (max-width: 768px) {
+  .main {
+    &_desc {
+      padding: 3rem;
+    }
+    &_title {
+      margin-bottom: 2rem;
+    }
+  }
+  .movie {
+    &_title {
+      @include fontHeight(3);
+      font-weight: $fontBold;
+      margin-bottom: 1rem;
+    }
+    &_tagline {
+      @include fontHeight(1.6);
+    }
+  }
+}
