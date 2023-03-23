@@ -89,3 +89,14 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .movie {
+    &_title {
+      @include fontHeight(2.4);
+    }
+    &_tagline {
+      @include fontHeight(1.4);
+    }
+  }
+}

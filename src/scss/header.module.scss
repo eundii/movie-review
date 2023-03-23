@@ -76,3 +76,13 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .header {
+    .header_contents {
+      .logo {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

@@ -9,3 +9,9 @@
   @include fontHeight(2.6);
   font-weight: $fontBold;
 }
+
+@media (max-width: 480px) {
+  .title {
+    @include fontHeight(2.2);
+  }
+}
