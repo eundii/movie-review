@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { API_KEY, BASE_URL } from "./api/baseUrl";
 
-import axios from "axios";
 import "./scss/style.scss";
 
 import Home from "./pages/Home";
@@ -18,38 +16,6 @@ export const MovieDispatchContext = React.createContext();
 
 function App() {
   const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const apiUrlPopular = `${BASE_URL}movie/popular?api_key=${API_KEY}&language=ko`;
-    const apiUrlTopRated = `${BASE_URL}movie/top_rated?api_key=${API_KEY}&language=ko`;
-    const apiUrlLatest = `${BASE_URL}movie/now_playing?api_key=${API_KEY}&language=ko`;
-
-    const fetchMovies = async () => {
-      try {
-        axios
-          .all([
-            axios.get(apiUrlPopular),
-            axios.get(apiUrlTopRated),
-            axios.get(apiUrlLatest),
-          ])
-          .then(
-            axios.spread((res1, res2, res3) => {
-              const popular = res1.data.results;
-              const topRated = res2.data.results;
-              const latest = res3.data.results;
-              setData({
-                popular,
-                topRated,
-                latest,
-              });
-            })
-          );
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchMovies();
-  }, []);
 
   return (
     <div className="App">
