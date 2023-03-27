@@ -19,7 +19,7 @@ function Header() {
               <Link to={"/"}>평가</Link>
             </li>
             <li>
-              <Link to={"/"}>북마크</Link>
+              <Link to={"/bookmark"}>북마크</Link>
             </li>
           </ul>
         </nav>

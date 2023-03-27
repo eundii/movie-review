@@ -10,6 +10,7 @@ import ReviewDetail from "./pages/ReviewDetail";
 import MovieDetail from "./pages/MovieDetail";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BookmarkList from "./pages/BookmarkList";
 
 export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
@@ -27,6 +28,7 @@ function App() {
               <Routes>
                 <Route path="" element={<Home />} />
                 <Route path="/search" element={<SearchList />} />
+                <Route path="/bookmark" element={<BookmarkList />} />
                 {/* <Route path="/review/:id" element={<ReviewList />} />
                 <Route path="/detail/:id" element={<ReviewDetail />} /> */}
                 <Route path="/movie/:id" element={<MovieDetail />} />
