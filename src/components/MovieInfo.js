@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IMAGE_BASE_URL } from "../api/baseUrl";
 
-import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { BsBookmark, BsBookmarkHeartFill } from "react-icons/bs";
 import { FaPencilAlt } from "react-icons/fa";
 
 import sectionCss from "../scss/section.module.scss";
@@ -59,7 +59,7 @@ function MovieInfo({ movie, credits }) {
                           ].join(" ")}
                           onClick={onFavoriteToggle}
                         >
-                          {active ? <MdFavorite /> : <MdFavoriteBorder />}
+                          {active ? <BsBookmarkHeartFill /> : <BsBookmark />}
                           <span className="sr-only">찜하기</span>
                         </button>
                         <button type="button" className={btnCss.btn_icon}>
