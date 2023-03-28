@@ -33,6 +33,23 @@
       font-weight: $fontBold;
     }
     .basic_info {
+
+      .info_area {
+        display: flex;
+        flex-wrap: wrap;
+        .info_left {
+          flex: 1;
+        }
+        .info_right {
+          margin-left: auto;
+          .btn_area {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      
+
       .title {
         @include fontHeight(1.8);
         font-weight: $fontBold;
@@ -62,11 +79,11 @@
           }
         }
       }
-      .overview {
-        margin-top: 2rem;
-        p {
-          @include fontHeight(1.4);
-        }
+    }
+    .overview {
+      margin-top: 2rem;
+      p {
+        @include fontHeight(1.4);
       }
     }
     .cast_info {

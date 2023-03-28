@@ -1,0 +1,19 @@
+@import 'value';
+
+.btn {
+  &_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.6rem;
+    color: $text3;
+    &.active {
+      color: $point2;
+    }
+    + .btn_icon {
+      margin-left: 1rem;
+    }
+  }
+}

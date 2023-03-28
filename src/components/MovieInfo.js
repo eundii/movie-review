@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMAGE_BASE_URL } from "../api/baseUrl";
+
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { FaPencilAlt } from "react-icons/fa";
 
 import sectionCss from "../scss/section.module.scss";
 import movieCss from "../scss/movieInfo.module.scss";
+import btnCss from "../scss/btn.module.scss";
 
 function MovieInfo({ movie, credits }) {
   const env = process.env;
   env.PUBLIC_URL = env.PUBLIC_URL || "";
+
+  const [active, setActive] = useState(false);
+
+  const onFavoriteToggle = () => {
+    active ? setActive(false) : setActive(true);
+  };
 
   const casting = credits.cast.slice(0, 5);
 
@@ -32,10 +42,33 @@ function MovieInfo({ movie, credits }) {
               <div className={movieCss.info_section}>
                 <h4>기본 정보</h4>
                 <div className={movieCss.basic_info}>
-                  <p className={movieCss.title}>{movie.title}</p>
-                  <p className={movieCss.date}>
-                    <span>{movie.release_date}</span>
-                  </p>
+                  <div className={movieCss.info_area}>
+                    <div className={movieCss.info_left}>
+                      <p className={movieCss.title}>{movie.title}</p>
+                      <p className={movieCss.date}>
+                        <span>{movie.release_date}</span>
+                      </p>
+                    </div>
+                    <div className={movieCss.info_right}>
+                      <div className={movieCss.btn_area}>
+                        <button
+                          type="button"
+                          className={[
+                            btnCss.btn_icon,
+                            `${active ? btnCss.active : ""}`,
+                          ].join(" ")}
+                          onClick={onFavoriteToggle}
+                        >
+                          {active ? <MdFavorite /> : <MdFavoriteBorder />}
+                          <span className="sr-only">찜하기</span>
+                        </button>
+                        <button type="button" className={btnCss.btn_icon}>
+                          {<FaPencilAlt />}
+                          <span className="sr-only">평가하기</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                   <ul className={movieCss.genres_list}>
                     {movie.genres.map((genre, idx) => (
                       <li key={idx}>
@@ -43,9 +76,9 @@ function MovieInfo({ movie, credits }) {
                       </li>
                     ))}
                   </ul>
-                  <div className={movieCss.overview}>
-                    <p>{movie.overview}</p>
-                  </div>
+                </div>
+                <div className={movieCss.overview}>
+                  <p>{movie.overview}</p>
                 </div>
               </div>
               {credits.cast.length ? (
