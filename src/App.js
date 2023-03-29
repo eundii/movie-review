@@ -12,7 +12,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BookmarkList from "./pages/BookmarkList";
 
-const reducer = (state, action) => {
+const reducerBookmark = (state, action) => {
   let newState = [];
   switch (action.type) {
     case "INIT": {
@@ -26,16 +26,10 @@ const reducer = (state, action) => {
       newState = state.filter((item) => item.id !== action.targetId);
       break;
     }
-    case "EDIT": {
-      newState = state.map((item) =>
-        item.id === action.data.id ? { ...action.data } : item
-      );
-      break;
-    }
     default:
       return state;
   }
-  localStorage.setItem("review", JSON.stringify(newState));
+  localStorage.setItem("bookmarks", JSON.stringify(newState));
   return newState;
 };
 
@@ -43,54 +37,35 @@ export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatchBookmark] = useReducer(reducerBookmark, []);
 
   useEffect(() => {
-    const localData = localStorage.getItem("review");
-    if (localData) {
-      const reviewList = JSON.parse(localData).sort(
-        (a, b) => parseInt(b.id) - parseInt(a.id)
-      );
+    const localDataBookmarks = localStorage.getItem("bookmarks");
+    if (localDataBookmarks) {
+      const bookmarks = JSON.parse(localDataBookmarks);
 
-      if (reviewList.length >= 1) {
-        dataId.current = parseInt(reviewList[0].id) + 1;
-        dispatch({ type: "INIT", data: reviewList });
+      if (bookmarks.length >= 1) {
+        dispatchBookmark({ type: "INIT", data: bookmarks });
       }
     }
   }, []);
 
-  const dataId = useRef(0);
-
   // CREATE
-  const onCreate = (date, content, emotion) => {
-    dispatch({
+  const onCreateBookmark = (date, movie) => {
+    dispatchBookmark({
       type: "CREATE",
       data: {
-        id: dataId.current,
+        id: movie.id,
         date: new Date(date).getTime(),
-        content,
-        emotion,
+        movieTitle: movie.title,
+        movieImg: movie.poster_path,
       },
     });
-    dataId.current += 1;
   };
 
   // REMOVE
-  const onRemove = (targetId) => {
-    dispatch({ type: "REMOVE", targetId });
-  };
-
-  // EDIT
-  const onEdit = (targetId, date, content, emotion) => {
-    dispatch({
-      type: "EDIT",
-      data: {
-        id: targetId,
-        date: new Date(date).getTime(),
-        content,
-        emotion,
-      },
-    });
+  const onRemoveBookmark = (targetId) => {
+    dispatchBookmark({ type: "REMOVE", targetId });
   };
 
   return (
@@ -98,9 +73,8 @@ function App() {
       <MovieStateContext.Provider value={data}>
         <MovieDispatchContext.Provider
           value={{
-            onCreate,
-            onEdit,
-            onRemove,
+            onCreateBookmark,
+            onRemoveBookmark,
           }}
         >
           <BrowserRouter>

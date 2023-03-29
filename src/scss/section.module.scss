@@ -9,6 +9,10 @@
   @include fontHeight(2.6);
   font-weight: $fontBold;
 }
+.total_count {
+  @include fontHeight(1.6);
+  color: $text1;
+}
 
 @media (max-width: 480px) {
   .title {
