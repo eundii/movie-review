@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { IMAGE_BASE_URL } from "../api/baseUrl";
 
 import { BsBookmark, BsBookmarkHeartFill } from "react-icons/bs";

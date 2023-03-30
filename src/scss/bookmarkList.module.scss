@@ -3,24 +3,104 @@
 .bookmark {
   &_list {
     display: flex;
+    flex-wrap: wrap;
     margin: -1rem;
     li {
-      flex: 0 0 20%;
-      height: 300px;
-      margin: 1rem;
+      width: 20%;
+      padding: 1rem;
+      cursor: pointer;
       &:first-child {
+        cursor: default;
+      }
+      
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .title_area {
+        padding: 1rem 0 1.5rem;
+        border-bottom: 1px solid $line1;
+        .title {
+          @include fontHeight(1.8);
+          font-weight: $fontBold;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .date {
+          padding-top: 0.5rem;
+          color: $text1;
+          @include fontHeight(1.4);
+        }
+      }
+
+      // total count 영역
+      .bookmark_total {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        padding: 2rem 1rem;
         text-align: center;
         background-color: $black;
         color: $white;
-        @include fontHeight(3.2);
-        font-weight: $fontBold;
+        .total_area {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+        }
+        .total_text {
+          @include fontHeight(3.2);
+          font-weight: $fontBold;
+        }
+        .sub_text {
+          @include fontHeight(1.4);
+          color: $text2;
+          span {
+            display: block;
+          }
+        }
         .point_text {
           @include fontHeight(4.8);
         }
+      }
+    }
+  }
+
+  .empty_area {
+    padding: 7rem 0;
+    text-align: center;
+    .empty_title {
+      @include fontHeight(2.4);
+      font-weight: $fontBold;
+    }
+    .empty_text {
+      padding-top: 2rem;
+      @include fontHeight(1.6);
+      color: $text1;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .bookmark {
+    &_list {
+      li {
+        width: 25%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .bookmark {
+    &_list {
+      li {
+        width: 50%;
       }
     }
   }
