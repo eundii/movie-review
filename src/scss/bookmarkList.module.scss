@@ -6,6 +6,8 @@
     flex-wrap: wrap;
     margin: -1rem;
     li {
+      display: flex;
+      flex-direction: column;
       width: 20%;
       padding: 1rem;
       cursor: pointer;
@@ -19,6 +21,7 @@
         height: auto;
       }
       .title_area {
+        margin-top: auto;
         padding: 1rem 0 1.5rem;
         border-bottom: 1px solid $line1;
         .title {
@@ -91,6 +94,18 @@
     &_list {
       li {
         width: 25%;
+        // total count 영역
+        .bookmark_total {
+          .total_text {
+            @include fontHeight(2.4);
+          }
+          .sub_text {
+            @include fontHeight(1.2);
+          }
+          .point_text {
+            @include fontHeight(3.2);
+          }
+        }
       }
     }
   }
