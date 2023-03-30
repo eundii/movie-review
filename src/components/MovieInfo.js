@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IMAGE_BASE_URL } from "../api/baseUrl";
 
 import { BsBookmark, BsBookmarkHeartFill } from "react-icons/bs";
@@ -7,18 +7,36 @@ import { FaPencilAlt } from "react-icons/fa";
 import sectionCss from "../scss/section.module.scss";
 import movieCss from "../scss/movieInfo.module.scss";
 import btnCss from "../scss/btn.module.scss";
+import { MovieDispatchContext, MovieStateContext } from "./../App";
 
-function MovieInfo({ movie, credits }) {
+function MovieInfo({ movie, credits, active, setActive }) {
   const env = process.env;
   env.PUBLIC_URL = env.PUBLIC_URL || "";
 
-  const [active, setActive] = useState(false);
+  const bookmarkList = useContext(MovieStateContext);
+  const { onCreateBookmark, onRemoveBookmark } =
+    useContext(MovieDispatchContext);
 
   const onFavoriteToggle = () => {
-    active ? setActive(false) : setActive(true);
+    if (active) {
+      setActive(false);
+      onRemoveBookmark(movie.id);
+    } else {
+      setActive(true);
+      onCreateBookmark(new Date(), movie);
+    }
   };
 
   const casting = credits.cast.slice(0, 5);
+
+  useEffect(() => {
+    if (movie) {
+      const findItem = bookmarkList.find(
+        (item) => parseInt(item.id) === parseInt(movie.id)
+      );
+      findItem ? setActive(true) : setActive(false);
+    }
+  }, [movie, active, bookmarkList]);
 
   return (
     <section className={sectionCss.section}>

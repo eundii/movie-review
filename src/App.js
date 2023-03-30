@@ -37,7 +37,7 @@ export const MovieStateContext = React.createContext();
 export const MovieDispatchContext = React.createContext();
 
 function App() {
-  const [data, dispatchBookmark] = useReducer(reducerBookmark, []);
+  const [bookmarks, dispatchBookmark] = useReducer(reducerBookmark, []);
 
   useEffect(() => {
     const localDataBookmarks = localStorage.getItem("bookmarks");
@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <MovieStateContext.Provider value={data}>
+      <MovieStateContext.Provider value={bookmarks}>
         <MovieDispatchContext.Provider
           value={{
             onCreateBookmark,

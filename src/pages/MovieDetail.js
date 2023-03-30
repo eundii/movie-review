@@ -4,12 +4,14 @@ import { BASE_URL, API_KEY, IMAGE_BASE_URL } from "../api/baseUrl";
 import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "../scss/movieDetail.module.scss";
+
 import MovieInfo from "../components/MovieInfo";
 import HomeList from "../components/HomeList";
 
 function MovieDetail() {
   let { id } = useParams();
   const [data, setData] = useState(null);
+  const [active, setActive] = useState(false);
   const navigate = useNavigate();
 
   const env = process.env;
@@ -80,7 +82,12 @@ function MovieDetail() {
             </div>
           </div>
           <div className="layout-container">
-            <MovieInfo movie={data.movie} credits={data.credits} />
+            <MovieInfo
+              movie={data.movie}
+              credits={data.credits}
+              active={active}
+              setActive={setActive}
+            />
             {data.similar.length ? (
               <HomeList
                 title={"비슷한 장르 영화를 추천해드려요"}

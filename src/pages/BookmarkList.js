@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import sectionCss from "../scss/section.module.scss";
 import bookmarkCss from "../scss/bookmarkList.module.scss";
 
+import { MovieStateContext } from "./../App";
+
 function BookmarkList() {
+  const bookmarks = useContext(MovieStateContext);
+
   return (
     <div className="layout-container">
       <section className={sectionCss.section}>
@@ -12,7 +16,11 @@ function BookmarkList() {
           <ul className={bookmarkCss.bookmark_list}>
             <li>
               <p>
-                총 <span className={bookmarkCss.point_text}>19개</span>를<br />
+                총
+                <span className={bookmarkCss.point_text}>
+                  {bookmarks.length}개
+                </span>
+                를<br />
                 찜해놨어요!
               </p>
             </li>
