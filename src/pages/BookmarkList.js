@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 
 import { IMAGE_BASE_URL } from "../api/baseUrl";
 
+import { RiDeleteBin5Line } from "react-icons/ri";
+
 import sectionCss from "../scss/section.module.scss";
 import bookmarkCss from "../scss/bookmarkList.module.scss";
 
-import { MovieStateContext } from "./../App";
+import { MovieDispatchContext, MovieStateContext } from "./../App";
 import { useNavigate } from "react-router-dom";
 import { getStringDate } from "../util/date";
 
@@ -14,6 +16,7 @@ function BookmarkList() {
   env.PUBLIC_URL = env.PUBLIC_URL || "";
 
   const bookmarks = useContext(MovieStateContext);
+  const { onRemoveBookmark } = useContext(MovieDispatchContext);
 
   const navigate = useNavigate();
 
@@ -50,7 +53,14 @@ function BookmarkList() {
                 </div>
               </li>
               {bookmarks.map((item) => (
-                <li key={item.id} onClick={() => goMovieDetail(item.id)}>
+                <li key={item.id}>
+                  <button
+                    className={bookmarkCss.btn_remove}
+                    onClick={() => onRemoveBookmark(item.id)}
+                  >
+                    <RiDeleteBin5Line />
+                    <span className="sr-only">삭제</span>
+                  </button>
                   <img
                     src={
                       item.movieImg
@@ -58,8 +68,12 @@ function BookmarkList() {
                         : process.env.PUBLIC_URL + `/assets/no_image_poster.png`
                     }
                     alt={item.original_title}
+                    onClick={() => goMovieDetail(item.id)}
                   />
-                  <div className={bookmarkCss.title_area}>
+                  <div
+                    className={bookmarkCss.title_area}
+                    onClick={() => goMovieDetail(item.id)}
+                  >
                     <p className={bookmarkCss.title}>{item.movieTitle}</p>
                     <p className={bookmarkCss.date}>
                       찜한 날짜 : {getStringDate(new Date(item.date))}
