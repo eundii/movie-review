@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Eundii Movie 🎥
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+추천 영화 리스트를 보여주고 원하는 영화를 찾아서 찜하거나 평가할 수 있는 기능을 React로 구현한 반응형 사이트 입니다.
 
-## Available Scripts
+## 🔖 초기 셋팅
 
-In the project directory, you can run:
+### 1) API 사용
 
-### `npm start`
+영화 정보 데이터베이스를 사용할 수 있는 오픈 API인 <a href="https://developers.themoviedb.org/3/getting-started/introduction">TMDB API</a>를 사용하였습니다. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+개인 API KEY 발급 후 프로젝트 root에 .env 파일 생성해서 관리하였습니다.
+API 호출 할 때, 개인 key를  process.env.REACT_APP_TMDB 로 접근해 사용했습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<strong>⚠️개인 API KEY를 .env로 관리하는 이유 : </strong><br>
+개인의 API Key로는 1분에 100개까지의 request 전송이 가능한 Rate Limit (속도 제한)이 존재하기 때문입니다. 개인의 할당량을 보장받기 위해서는 API Key를 공개된 저장소에 배포/업로드 하지 않는 것을 권장합니다.<br>
+.gitignore에 .env가 설정되어 있으므로, 소스코드를 github에 업로드 하더라도 .env 파일은 공개된 저장소에 업로드 되지 않습니다.
 
-### `npm test`
+### 2) SCSS Modules 사용
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CSS 클래스 중첩을 신경쓰지 않고 className을 작성하기 위하여 사용하였습니다.
+reset.scss, value.scss만 global scope로 적용되도록 사용하고 나머지는 모두 컴포넌트 별로 scss를 관리하도록 하였습니다.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💻 기능 구현
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1) HOME
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
