@@ -19,6 +19,13 @@
     margin: 0 auto;
     box-sizing: border-box;
 
+    .nav_area {
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+      margin-right: 2rem;
+    }
+
     .logo {
       font-family: 'Permanent Marker', cursive;
       font-size: 4rem;
@@ -36,9 +43,14 @@
         li {
           position: relative;
           @include fontHeight(1.6);
-          font-weight: $fontBold;
+          &.active {
+            a {
+              font-weight: $fontBold;
+              color: $primary1;
+            }
+          }
           a {
-            color: $active2;
+            color: $secondary
           }
           + li {
             margin-left: 1.2rem;
@@ -64,14 +76,13 @@
 @media (max-width: 1024px) {
   .header {
     .header_contents {
-      display: block;
-      nav{
+      .nav_area {
+        margin-right: 0;
+      }
+      .search_area{
         display: block;
         width: 100%;
         margin-top: 1.2rem;
-        ul {
-          display: none;
-        }
       }
     }
   }

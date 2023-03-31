@@ -80,10 +80,10 @@ function MovieInfo({ movie, credits, active, setActive }) {
                           {active ? <BsBookmarkHeartFill /> : <BsBookmark />}
                           <span className="sr-only">찜하기</span>
                         </button>
-                        <button type="button" className={btnCss.btn_icon}>
+                        {/* <button type="button" className={btnCss.btn_icon}>
                           {<FaPencilAlt />}
                           <span className="sr-only">평가하기</span>
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
